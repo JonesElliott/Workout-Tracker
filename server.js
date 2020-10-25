@@ -15,7 +15,19 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+
+db.Workouts.create({ name: "Fitness Tracker" })
+  .then(dbWorkout => {
+    console.log(dbWorkout);
+  })
+  .catch(({message}) => {
+    console.log(message);
+  });
+
+var router = require("./controllers/controller");
+
+app.use(router);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
