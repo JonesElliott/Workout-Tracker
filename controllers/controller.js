@@ -7,13 +7,13 @@ var router = express.Router();
 
 // Retrieve all from db
 router.get("/api/workouts", function(request, response) {
-    db.Workout.findAll({})
+    db.Workout.find({})
     .then(dbWorkout => {
-        res.json(dbWorkout);
+        response.json(dbWorkout);
     })
     .catch(error => {
         console.log(error);
-        res.json(error);
+        response.json(error);
     });
 });
 
