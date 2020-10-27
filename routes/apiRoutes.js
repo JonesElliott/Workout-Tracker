@@ -2,14 +2,14 @@ const db = require("../models");
 
 module.exports = function(app) {
     // Retrieve all from db
-    app.get("/api/workouts", function(request, response) {
+    app.get("/api/workouts", function(req, res) {
         db.Workout.find({})
         .then(dbWorkout => {
-            response.json(dbWorkout);
+            res.json(dbWorkout);
         })
         .catch(error => {
             console.log(error);
-            response.json(error);
+            res.json(error);
         });
     });
 
@@ -19,9 +19,9 @@ module.exports = function(app) {
             const response = await db.Workout.create({type: "workout"})
             res.json(response);
         }
-        catch(err){
-            console.log("error occurred creating a workout: ", err)
-            res.json(err);
+        catch(error){
+            console.log("An error occurred while creating a workout: ", error)
+            res.json(error);
         }
     })
 
@@ -41,14 +41,14 @@ module.exports = function(app) {
                 console.log(allExercises)
                 updateWorkout(allExercises)
             })
-            .catch(err => {
-                res.json(err);
+            .catch(error => {
+                res.json(error);
             });
 
         function updateWorkout(exercises){
-            db.Workout.findByIdAndUpdate(workoutId, {exercises: exercises}, function(err, doc){
-            if(err){
-                console.log(err)
+            db.Workout.findByIdAndUpdate(workoutId, {exercises: exercises}, function(error, doc){
+            if(error){
+                console.log(error)
             }
 
             })
@@ -61,8 +61,8 @@ module.exports = function(app) {
         .then(workout => {
             res.json(workout);
         })
-        .catch(err => {
-            res.json(err);
+        .catch(error => {
+            res.json(error);
         });
     }); 
 };
