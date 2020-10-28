@@ -33,6 +33,10 @@ Cardio tracks the type, distance in miles, and duration of the exercise.
 Resistance tracks the name, weight in pounds, number of sets and reps, and the duration of the exercise.
 
 ![resistance example](./documentation/resistance.PNG)
+
+The dashboard link at the top of the page takes the user to the stats page where all excercises and workouts are graphed in tables and pie charts tracked by date.
+
+![dashboard example](./documentation/dashboard.PNG)
   
 
 ## Contributing
